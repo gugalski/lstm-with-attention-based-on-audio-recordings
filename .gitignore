@@ -207,4 +207,5 @@ marimo/_lsp/
 __marimo__/
 
 # Trainign data
-training_data/*
+training/files/*
+training/labels.csv
