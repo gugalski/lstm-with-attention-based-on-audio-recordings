@@ -11,7 +11,7 @@ A research-grade pipeline for detecting depression from voice recordings using a
 1. [Background](#background)
 2. [Architecture](#architecture)
 3. [Repository Structure](#repository-structure)
-4. [Environment Setup](#environment-setup)
+4. [Setup (macOS)](#setup-macos)
 5. [Data Preparation](#data-preparation)
 6. [Audio Preprocessing & Feature Extraction](#audio-preprocessing--feature-extraction)
 7. [Model Details](#model-details)
@@ -118,24 +118,27 @@ A simple last-hidden-state summary discards temporal structure. Bahdanau attenti
 
 ---
 
-## Environment Setup
+## Setup (macOS)
 
-**Python 3.11 or later is required.**
+**Requires Python 3.11+.** Install via [Homebrew](https://brew.sh) if needed:
 
 ```bash
-# create and activate a virtual environment
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+brew install python
+```
 
-# install dependencies
+Then install all Python dependencies directly:
+
+```bash
 pip install -r requirements.txt
 ```
+
+**Apple Silicon (M1/M2/M3):** PyTorch uses the **MPS** (Metal Performance Shaders) backend automatically — no extra steps needed. Training is significantly faster than CPU.
 
 **Key dependencies:**
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `torch` | ≥ 2.3 | Model, training, autocast |
+| `torch` | ≥ 2.3 | Model, training, MPS/CUDA autocast |
 | `torchaudio` | ≥ 2.3 | Audio I/O, resampling, MFCC transforms |
 | `numpy` | ≥ 1.26 | Array ops |
 | `pandas` | ≥ 2.2 | Labels CSV handling |
@@ -145,7 +148,7 @@ pip install -r requirements.txt
 | `pyyaml` | ≥ 6.0 | Config loading |
 | `pytest` | ≥ 8.0 | Test runner |
 
-GPU training is automatic when CUDA is available. Mixed precision (`torch.autocast`) is enabled on GPU only.
+The device is selected automatically at runtime: **CUDA → MPS → CPU**.
 
 ---
 

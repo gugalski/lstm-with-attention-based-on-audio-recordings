@@ -105,7 +105,7 @@ def make_dataloaders(
     kw: dict = dict(
         collate_fn=_collate_fn,
         num_workers=0,
-        pin_memory=torch.cuda.is_available(),
+        pin_memory=torch.cuda.is_available(),  # pin_memory only benefits CUDA transfers
     )
     train_dl = DataLoader(train_ds, batch_size=cfg.training.batch_size, shuffle=True, **kw)
     val_dl = DataLoader(val_ds, batch_size=cfg.training.batch_size, shuffle=False, **kw)

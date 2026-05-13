@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
 from .model import LSTMWithAttention
-from .utils import Config
+from .utils import Config, get_device
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +23,7 @@ def _run_epoch(
     criterion: nn.Module,
     optimizer: torch.optim.Optimizer | None,
     device: torch.device,
-    scaler: torch.cuda.amp.GradScaler | None,
+    scaler: "torch.cuda.amp.GradScaler | None",
 ) -> tuple[float, float]:
     training = optimizer is not None
     model.train(training)
@@ -64,7 +64,8 @@ def train(
     cfg: Config,
     output_dir: Path,
 ) -> None:
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
+    logger.info("Using device: %s", device)
     model = model.to(device)
 
     labels = [int(y) for _, y in train_loader.dataset]

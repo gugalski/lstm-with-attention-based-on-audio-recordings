@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT))
 from src.dataset import make_dataloaders
 from src.evaluate import evaluate
 from src.model import LSTMWithAttention
-from src.utils import Config, get_logger, set_seed
+from src.utils import Config, get_device, get_logger, set_seed
 
 
 def _parse_args() -> argparse.Namespace:
@@ -42,7 +42,7 @@ def main() -> None:
     x, _ = next(iter(test_dl))
     input_size = x.shape[-1]
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
     model = LSTMWithAttention(input_size=input_size, cfg=cfg.model)
     state = torch.load(ROOT / args.checkpoint, map_location=device, weights_only=True)
     model.load_state_dict(state)
