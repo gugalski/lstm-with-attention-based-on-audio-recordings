@@ -206,6 +206,9 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Claude Code project instructions
+CLAUDE.md
+
 # Training data
 training/files/*
 training/labels.csv
