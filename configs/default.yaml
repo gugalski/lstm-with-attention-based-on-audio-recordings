@@ -1,0 +1,30 @@
+audio:
+  sample_rate: 16000
+  frame_length_ms: 2000
+  hop_length_ms: 500
+
+features:
+  feature_type: mfcc        # mfcc | mel
+  n_mfcc: 40
+  n_mels: 128
+  n_fft: 512
+  hop_length: 160           # in samples
+
+model:
+  hidden_size: 256
+  num_layers: 2
+  dropout: 0.4
+  bidirectional: true
+
+training:
+  batch_size: 32
+  max_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  seed: 42
+
+split:
+  train: 0.70
+  val:   0.15
+  test:  0.15

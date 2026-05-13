@@ -1,0 +1,11 @@
+torch>=2.3.0
+torchaudio>=2.3.0
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+matplotlib>=3.8
+seaborn>=0.13
+tensorboard>=2.16
+pyyaml>=6.0
+tqdm>=4.66
+pytest>=8.0
