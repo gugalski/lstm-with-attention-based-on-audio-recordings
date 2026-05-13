@@ -29,10 +29,9 @@ class LSTMWithAttention(nn.Module):
             hidden_size=cfg.hidden_size,
             num_layers=cfg.num_layers,
             dropout=cfg.dropout if cfg.num_layers > 1 else 0.0,
-            bidirectional=cfg.bidirectional,
             batch_first=True,
         )
-        lstm_out_dim = cfg.hidden_size * (2 if cfg.bidirectional else 1)
+        lstm_out_dim = cfg.hidden_size
         self.attention = BahdanauAttention(lstm_out_dim)
         self.norm = nn.LayerNorm(lstm_out_dim)
         self.dropout = nn.Dropout(cfg.dropout)

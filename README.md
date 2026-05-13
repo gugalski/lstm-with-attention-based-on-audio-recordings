@@ -1,7 +1,7 @@
 # Depression Detection from Voice — LSTM + Attention
 
 Binary classification of depression from voice recordings.  
-Pipeline: raw `.wav` → MFCC features → overlapping frames → BiLSTM + Bahdanau attention → prediction.
+Pipeline: raw `.wav` → MFCC features → overlapping frames → LSTM + Bahdanau attention → prediction.
 
 > Model outputs are not a clinical diagnosis.
 
