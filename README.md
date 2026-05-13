@@ -12,7 +12,7 @@ Pipeline: raw `.wav` → MFCC features → overlapping frames → BiLSTM + Bahda
 ```
 Input (T, 120)  — MFCC 40 + Δ + ΔΔ
   │
-BiLSTM × 2      — hidden 256 per direction
+LSTM × 2        — hidden 256
   │
 Bahdanau Attention
   │
@@ -82,7 +82,7 @@ Plots and metrics are saved to `outputs/figures/`.
 | `audio.hop_length_ms` | 500 | Frame stride (75% overlap) |
 | `features.feature_type` | `mfcc` | `mfcc` or `mel` |
 | `features.n_mfcc` | 40 | Coefficients (×3 with Δ+ΔΔ = 120) |
-| `model.hidden_size` | 256 | LSTM units per direction |
+| `model.hidden_size` | 256 | LSTM units |
 | `model.num_layers` | 2 | Stacked LSTM layers |
 | `model.dropout` | 0.4 | Dropout |
 | `training.batch_size` | 32 | |

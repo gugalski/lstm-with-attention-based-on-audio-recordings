@@ -14,7 +14,7 @@ model:
   hidden_size: 256
   num_layers: 2
   dropout: 0.4
-  bidirectional: true
+  bidirectional: false
 
 training:
   batch_size: 32

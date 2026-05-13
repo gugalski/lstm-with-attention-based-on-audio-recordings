@@ -31,7 +31,7 @@ class ModelConfig:
     hidden_size: int = 256
     num_layers: int = 2
     dropout: float = 0.4
-    bidirectional: bool = True
+    bidirectional: bool = False
 
 
 @dataclass
