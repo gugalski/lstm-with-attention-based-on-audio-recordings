@@ -9,7 +9,7 @@ from src.utils import ModelConfig
 
 @pytest.fixture
 def model() -> LSTMWithAttention:
-    cfg = ModelConfig(hidden_size=32, num_layers=2, dropout=0.0, bidirectional=True)
+    cfg = ModelConfig(hidden_size=32, num_layers=2, dropout=0.0, bidirectional=False)
     return LSTMWithAttention(input_size=120, cfg=cfg)
 
 
